@@ -3,14 +3,14 @@
 ## Demo video (YouTube)
 https://www.youtube.com/watch?v=ZZuG-MaDQCI
 
-##Overview
+## Overview
 #
 This web application is a personal project that is currently being developed and serves as a social media web application reminiscent of Twitter or other social blogging sites. I’m using a model like Twitter’s because many of the fundamental components and functionalities are similar, however, the primary use cases of this application will be rather different than what Twitter is used for. The app’s true intentions will have to remain under wraps for now, but I’m excited to share what I’ve made public so far!
 
 Tools
 React JS, Redux, JavaScript, jQuery, JSON, HTML5, CSS3, Bootstrap, Postman, GCF, Firebase
 
-##The Rundown
+## The Rundown
 #
 The back-end functions and API requests are currently being built using JavaScript and jQuery. API requests are tested using Postman. The app is using Firebase for the database, storage, and authentication; hence, user authorization and other security features are mostly done with Google Cloud Functions.
 #
