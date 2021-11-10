@@ -15,7 +15,15 @@ body {
 .nav-container {
   margin: auto;
 }
+.nav-container svg {
+  color: #FFF;
+
+}
 
 a {
   text-decoration: none;
+}
+
+#HomeIcon {
+  color: yellow;
 }

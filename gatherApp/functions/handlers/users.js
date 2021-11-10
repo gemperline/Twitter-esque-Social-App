@@ -220,7 +220,7 @@ exports.uploadImage = (req, res) => {
 
     const busboy = new BusBoy({ headers: req.headers });
 
-    var IFN;    
+    let imageFileName;    
     let imageToBeUploaded = {};
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => { 
@@ -229,19 +229,19 @@ exports.uploadImage = (req, res) => {
             return res.status(400).json({ error: 'File type must be .jpeg or .png' });
 
         const imageExtension = filename.split('.')[filename.split('.').length - 1];   // store the image ext (i.e. '.png')
-        const imageFileName = `${Math.round(Math.random() * 100000000000)}.${imageExtension}`;  // random numerical filename (ex. '656724628.png') as a string  
+        imageFileName = `${Math.round(Math.random() * 100000000000)}.${imageExtension}`;  // random numerical filename (ex. '656724628.png') as a string  
         const filepath = path.join(os.tmpdir(), imageFileName);
         imageToBeUploaded = { filepath, mimetype };
         file.pipe(fs.createWriteStream(filepath));
 
-        IFN = imageFileName;    // store imageFileName here, otherwise imageFileName will be out of scope when used in imageUrl string (due its imageExtension component)
+        const IFN = imageFileName;    // store imageFileName here, otherwise imageFileName will be out of scope when used in imageUrl string (due its imageExtension component)
     });
     busboy.on('finish', () => { 
 
         console.log('IFN: ' + IFN);
         admin
             .storage()
-            .bucket()
+            .bucket(config.storageBucket)
             .upload(imageToBeUploaded.filepath, {
                 resumable: false,
                 metadata: {
@@ -251,11 +251,11 @@ exports.uploadImage = (req, res) => {
                 }
             })
             .then(() => {
-                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${IFN}?alt=media`;
+                const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`;
                 return db.doc(`/users/${req.user.handle}`).update({ imageUrl });
             })
             .then(() => {
-                return res.json({ message: 'Image ' + IFN + ' uploaded successfully'});
+                return res.json({ message: 'Image ' + imageFileName + ' uploaded successfully'});
             })
             .catch(err => {
                 console.error("Upload image error");

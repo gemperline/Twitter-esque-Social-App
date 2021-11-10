@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+// import { createTheme } from '@material-ui/core/styles';
+import { unstable_createMuiStrictModeTheme as createTheme } from '@material-ui/core';
 import jwtDecode from 'jwt-decode';
 
 // Redux
@@ -22,7 +23,7 @@ import login from './pages/login';
 import register from './pages/register';
 import axios from 'axios';
 
-const theme = createMuiTheme(themeObject);
+const theme = createTheme(themeObject);
 
 const token = localStorage.FBIdToken;
 

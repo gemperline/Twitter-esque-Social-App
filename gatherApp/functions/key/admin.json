@@ -1,3 +1,12 @@
 {
-  // Firebase Auth Key
-}
+    "type": "service_account",
+    "project_id": "gather-app-af8a4",
+    "private_key_id": "6f8a9437aec75d6d416cbaa619301c3a6353b7e4",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5vZsDH2BzTUgM\nrulZ1abIGzY5T9l4Nm5/RUw6MIap8rKk0tdxuU0B7LJKbHfwCfvgmHXEjUhuTQdL\n75bJj9xF7iHev0amPlT3H5TlpzYnC4q4IVTNwzZGtoAwkSVf7/1QYVPAxaexdM1U\nzCaSjp8+jhYpa81mSbw0FzRWTXFP0sad28HjlfucujjowgR91AJB+/ilOWpO51wF\nRqL8jM1R1sVCXRE+uUGLvdv7LwrhC0xO3VFJiYgxZG/HmstsLZzTO5jMxqlG9eWh\nBJ8Aoy5PTuvJmZZ5LJbj0fmACEwF0S3dTIaDZbDk9i6YF7XSx/cWaMalqrkt36xz\ntP3wYAIFAgMBAAECggEAHu+dF2aM9ndbNj2VwTAsIK0jmWUayAJs4gbFPPXjIAA7\nz+cMGjVuRZFKWsn5KgJHsO9DwjJz62cp/XRQzY6H9h/FBWgfWMYN+cEJWDzC8Lrj\n5moqyUCn1BxGepBaRMHgk5g6TmO9W/mjz2lXTVay4ETjHRAG/G/wiE6LGYq5gj1E\nWPNCS27KhVRTpAE1ZyI9mtjKr3QnexVVA03NTscTQ3jUGHbsYGmc33xW9lvPcCWI\nWKBNP7H5CyPadHMolrqMIkD0wL8B5Wl7yaB3gI7o1FLRqI32mnPb0GvzJNmWVi60\nKfp0RhBqh+afRRLZK9hqv0adkbI5vvyVeFY+XzotmwKBgQD0hBkm49V2itMkFWNI\nQxKzLkPJlTQ4uYNka2yE5+zdOwSNjusUacPeB7wXt/IcYlwcBCSCD+v8J93pVmfW\n0Ls5x/74fnX9GJtrJRPXcgSjsviqLp/4JvRoDUVgcjD39HP3xBq7+rqLB9SmEkVd\nN3bnD0PZoZ6wn50+7TT/p5kAdwKBgQDCdtSZjVvKbdRv36y04XdzPUTIfFFYxIwC\nv+ie2MaWVXYv1l29Ykkw4OkYbi+CdcvfJyPx+HhGWCRZYc+ws7elgJfMlInn8N/f\nsUc2TRIPsEq3xpU2gkl8JNoqsIFDffY1uAnDTFfgTouqU1MnxfOxyiiBjCAfRs1y\nIr/0xlrMYwKBgQCD98PHbJHqL9TzFaQG/URbdq3ZX3DW6LEUgrIILVB2uoKjkC4q\nT0cKT2xh9MJ0NVX3PPkjRUqdRjsL07mpg/B4qAthvIcbuaswMcu6rOv6Gf8BgraN\n7SBeBEOcYSUyvjnU0H+JUzJZFTndA+FyBRxkaqW5EPSf6RWqP8Yp8R+v0wKBgA87\nGWmxbagMNCBTB4bfRejLurBtND3cnw60EzclyWAK74fNpWfo48ylQPx93NC+AyrG\nOQWBrYHs82PgylCPsumOidUnKSn2bsJpcydon+qEp0V/kz5CtBi6FjBTxLwRiJAq\nivE18IgL/tpnTlMGKREawVNsMzPf6sVuvVQhmQj7AoGAYQlBTZ5oMB5QrHuQJhHl\nSbIzoaKQJjuhUMTkBKm4SsaPB4be96V2eSURwdzbwLUYf53C4Z3CpegHeKmw2b7W\ngoOZoFrXouew0uRdGsa2fBKzBWYbd/WyY/HrDftbhjt/yrKLu8aPfjUU/IL9mVtH\nRUv5fENMPJM7AAK43M1EQd8=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-o3dzr@gather-app-af8a4.iam.gserviceaccount.com",
+    "client_id": "104687574814139734469",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-o3dzr%40gather-app-af8a4.iam.gserviceaccount.com"
+  }

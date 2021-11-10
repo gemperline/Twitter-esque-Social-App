@@ -3,8 +3,7 @@ const { db } = require('../util/admin');
 
 // Get the collection of posts
 exports.getAllPosts = (req, res) => {
-    db
-       .collection('posts')
+    db.collection('posts')
        .orderBy('createdAt', 'desc')
        .get()
        .then((data) => {
@@ -22,7 +21,10 @@ exports.getAllPosts = (req, res) => {
            });
            return res.json(posts);
        })
-       .catch((err) => console.error(err));
+       .catch((err) => {
+           console.error(err);
+           res.status(500).json({ error: err.code });
+       });
 };
 
 
@@ -35,8 +37,9 @@ exports.getAllPosts = (req, res) => {
     but the express method is a nice practice */
 exports.createPost = (req, res) => {
 
-    if (req.body.body.trim() === '')
+    if (req.body.body.trim() === '') {
         return res.status(400).json({ body: 'Body may not be empty' });
+    }
     
     // new post object
     const newPost = {
@@ -49,11 +52,9 @@ exports.createPost = (req, res) => {
     };
 
     // add the post to the collection [in Firebase DB]
-        db
-        .collection('posts')
+        db.collection('posts')
         .add(newPost)
-        .then((doc) => {
-            
+        .then((doc) => { 
             const resPost = newPost;
             resPost.postID = doc.id;
             res.json(resPost);
@@ -70,26 +71,26 @@ exports.getPost = (req, res) => {
     let postData = {};
 
     db.doc(`/posts/${req.params.postID}`).get()
-        .then(doc => {
+        .then((doc) => {
 
             if (!doc.exists) {
-                return res.status(404).json({ error: 'Post not found!' });
+                return res.status(404).json({ error: 'Post not found' });
             }
             postData = doc.data();
             postData.postID = doc.id;
             return db.collection('comments').orderBy('createdAt', 'DESC').where('postID', '==', req.params.postID).get();
         })
-        .then(data => {
+        .then((data) => {
             postData.comments = [];
-            data.forEach(doc => {
-                postData.comments.push(doc.data())
+            data.forEach((doc) => {
+                postData.comments.push(doc.data());
             });
             return res.json(postData);
         })
-        .catch(err => {
+        .catch((err) => {
             console.error(err);
             res.status(500).json({ error: err.code });
-        })
+        });
 };
 
 
@@ -108,9 +109,10 @@ exports.commentOnPost = (req, res) => {
         username: req.user.handle,
         userImage: req.user.imageUrl
     };
+    console.log(newComment);
 
     db.doc(`/posts/${req.params.postID}`).get()
-        .then(doc => {
+        .then((doc) => {
 
             // ensure that the post still exists
             if (!doc.exists) {
@@ -124,7 +126,7 @@ exports.commentOnPost = (req, res) => {
         .then(() => {
             res.json(newComment);
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json({ error: 'Error adding comment' });
         });
@@ -192,21 +194,23 @@ exports.unlikePost = (req, res) => {
 
     const postDoc = db.doc(`/posts/${req.params.postID}`);
 
-    let postData = {};
-
+    let postData;
+    console.log('IN UNLIKEPOST: ');
     postDoc.get()
-        .then(doc => {
+        .then((doc) => {
 
             if (doc.exists)
             {
                 postData = doc.data();
-                postData.likeDoc = doc.id;
+                postData.postID = doc.id;
+                console.log('postData: ' + postData);
                 return likeDoc.get();
             }
-            else
+            else {
                 return res.status(404).json({ error: 'Post not found' });
+            }
         })
-        .then(data => {
+        .then((data) => {
 
             // check to see if user has liked this post
             if (data.empty) 
@@ -221,9 +225,9 @@ exports.unlikePost = (req, res) => {
                     .then(() => {
                         res.json(postData);
                     });
-            };
+            }
         })
-        .catch(err => {
+        .catch((err) => {
             console.error(err);
             res.status(500).json({ error: err.code });
         });

@@ -18,21 +18,20 @@ module.exports = (req, res, next) => {
     admin
         .auth()
         .verifyIdToken(idToken)
-            .then(decodedToken => {
+        .then((decodedToken) => {
                     req.user = decodedToken;
-                    console.log(decodedToken);
                     return db.collection('users')
                         .where('userID', '==', req.user.uid)
                         .limit(1)
                         .get();
             })
-            .then(data => {
-                req.user.handle = data.docs[0].data().handle;
+            .then((data) => {
+                req.user.username = data.docs[0].data().handle;
                 req.user.imageUrl = data.docs[0].data().imageUrl;
                 return next();
             })
-            .catch(err => {
-                console.error('Error verifying token', err);
+            .catch((err) => {
+                console.error('Error verifying token ', err);
                 return res.status(400).json({ err });
-            })
+            });
 };

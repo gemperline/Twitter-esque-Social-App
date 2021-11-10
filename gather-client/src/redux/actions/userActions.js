@@ -73,16 +73,26 @@ export const getUserData = () => (dispatch) => {
 
 
 export const uploadImage = (formData) => (dispatch) => {
-    dispatch({ type: LOADING_USER })
-
+    dispatch({ type: LOADING_USER });
     console.log(...formData);
     axios.post('/user/image', formData)
-        .then(() => {
+        .then((res) => {
+            console.log("Res: " + res);
             dispatch(getUserData());
         })
         .catch(err => console.log("Error uploading image or getting user data\n" + err));
 };
 
+
+// Modify profile info
+export const editUserDetails = (userDetails) => (dispatch) => {
+    dispatch({ type: LOADING_USER });
+    axios.post('/user', userDetails)
+        .then(() => {
+            dispatch(getUserData());
+        })
+        .catch(err => console.log(err));
+};
 
 const setAuthorizationHeader = (token) => {
     const FBIdToken = `Bearer ${token}`;   // Authorization Type: "Bearer [token]"
